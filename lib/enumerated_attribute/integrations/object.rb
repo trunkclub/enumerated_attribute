@@ -10,10 +10,10 @@ module EnumeratedAttribute
 				name = name.to_s
 				val = nil if val == ''
 				val = val.to_sym if val
-				unless self.class.enumerated_attribute_allows_value?(name, val)
-					raise(InvalidEnumeration, "nil is not allowed on '#{name}' attribute, set :nil=>true option", caller) unless val
-					raise(InvalidEnumeration, ":#{val} is not a defined enumeration value for the '#{name}' attribute", caller) 
-				end
+				#unless self.class.enumerated_attribute_allows_value?(name, val)
+					#raise(InvalidEnumeration, "nil is not allowed on '#{name}' attribute, set :nil=>true option", caller) unless val
+					#raise(InvalidEnumeration, ":#{val} is not a defined enumeration value for the '#{name}' attribute", caller) 
+				#end
 				instance_variable_set('@'+name, val)
 			end
 			
