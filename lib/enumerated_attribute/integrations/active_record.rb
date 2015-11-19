@@ -21,12 +21,12 @@ module EnumeratedAttribute
 			
 			def write_enumerated_attribute(name, val)
 				name = name.to_s
-				return write_attribute(name, val) unless self.class.has_enumerated_attribute?(name)
+				return send("#{name}=", val) unless self.class.has_enumerated_attribute?(name)
 				val = nil if val == ''
 				val_str = val.to_s if val
 				val_sym = val.to_sym if val
 				return instance_variable_set('@'+name, val_sym) unless self.has_attribute?(name)
-				write_attribute(name, val_str)
+				send("#{name}=", val_str)
 				val_sym
 			end
 			
