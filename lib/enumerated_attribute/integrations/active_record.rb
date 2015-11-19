@@ -26,7 +26,7 @@ module EnumeratedAttribute
 				val_str = val.to_s if val
 				val_sym = val.to_sym if val
 				return instance_variable_set('@'+name, val_sym) unless self.has_attribute?(name)
-				send("#{name}=", val_str)
+				write_attribute(name, val_str)
 				val_sym
 			end
 			
